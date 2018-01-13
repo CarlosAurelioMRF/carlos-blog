@@ -19,7 +19,7 @@
       <ul>
         <li class="category">Website</li>
         <li><%= link_to "Blog", root_path %></li>
-        <li>Sobre</li>
+        <li><%= link_to "Sobre", about_path %></li>
       </ul>
 
       <ul>
@@ -27,6 +27,11 @@
         <li><a href="https://twitter.com/CarlosSpok">Twitter</a></li>
         <li><a href="https://www.instagram.com/carlosspok/">Instagram</a></li>
         <li><a href="https://github.com/CarlosAurelioMRF">Github</a></li>
+      </ul>
+
+      <ul>
+        <li class="category">Professional Media</li>
+        <li><a href="https://www.linkedin.com/in/carlos-aurelio-meireles-ribeiro-filho-3b0511b2/">Linkedin</a></li>
         <li><a href="mailto:carlosspok@gmail.com">Email</a></li>
       </ul>
 
@@ -35,7 +40,13 @@
 
     <div id="main_content">
       <div id="header">
-        <p>Publicações</p>
+        <% if current_page?(root_path) %>
+          <p>Publicações</p>
+        <% elsif current_page?(about_path) %>
+          <p>Sobre</p>
+        <% else %>
+          <%= link_to "Voltar para as publicações", root_path %>
+        <% end %>
 
         <div class="buttons">
           <button class="button"><%= link_to "Nova Publicação", new_post_path %></button>
